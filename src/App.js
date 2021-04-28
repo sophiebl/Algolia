@@ -1,25 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+import algoliasearch from "algoliasearch/lite";
+import {
+  InstantSearch,
+  Hits,
+  SearchBox,
+  Pagination,
+  Highlight,
+  ClearRefinements,
+  RefinementList,
+  Configure,
+} from "react-instantsearch-dom";
+import "./App.css";
+import PropTypes from "prop-types";
+require("dotenv").config();
+
+const searchClient = algoliasearch(
+  process.env.ALGOLIA_APP_ID,
+  process.env.ALGOLIA_ADMIN_KEY
+);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <header>SEARCH BAR</header>
+      <InstantSearch
+        searchClient={searchClient}
+        indexName="dev_sophieboulaaouli"
+      >
+        <div className="left-panel">
+          <ClearRefinements />
+          <h2>food_type</h2>
+          <RefinementList attribute="food_type" />
+          <Configure hitsPerPage={8} />
+        </div>
+        {/* <div className="right-panel">
+          <SearchBox />
+          <Hits hitComponent={Hit} />
+          <Pagination />
+        </div> */}
+      </InstantSearch>
     </div>
   );
 }
+
+function Hit(props) {
+  return (
+    <div>
+      <img src={props.hit.image} align="left" alt={props.hit.name} />
+      <div className="hit-name">
+        <Highlight attribute="name" hit={props.hit} />
+      </div>
+      <div className="hit-description">
+        <Highlight attribute="description" hit={props.hit} />
+      </div>
+      <div className="hit-price">${props.hit.price}</div>
+    </div>
+  );
+}
+
+Hit.propTypes = {
+  hit: PropTypes.object.isRequired,
+};
 
 export default App;
