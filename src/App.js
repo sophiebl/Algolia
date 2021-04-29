@@ -11,11 +11,10 @@ import {
 } from "react-instantsearch-dom";
 import "./App.css";
 import PropTypes from "prop-types";
-require("dotenv").config();
 
 const searchClient = algoliasearch(
-  process.env.ALGOLIA_APP_ID,
-  process.env.ALGOLIA_ADMIN_KEY
+  process.env.REACT_APP_ALGOLIA_APP_ID,
+  process.env.REACT_APP_ALGOLIA_ADMIN_KEY
 );
 
 function App() {
@@ -32,11 +31,11 @@ function App() {
           <RefinementList attribute="food_type" />
           <Configure hitsPerPage={8} />
         </div>
-        {/* <div className="right-panel">
+        <div className="right-panel">
           <SearchBox />
           <Hits hitComponent={Hit} />
           <Pagination />
-        </div> */}
+        </div>
       </InstantSearch>
     </div>
   );
