@@ -10,6 +10,8 @@ import {
 
 import "./App.css";
 import toastr from "toastr";
+import StarRatingComponent from "react-star-rating-component";
+
 import React from "react";
 
 const searchClient = algoliasearch(
@@ -95,6 +97,11 @@ function HitComponent({ hit }) {
       <div className="infos-container">
         <Highlight attribute="name" hit={hit} /> -
         <Highlight attribute="stars_count" hit={hit} />
+        <StarRatingComponent
+          name="rate"
+          value={hit.stars_count}
+          editing={false}
+        />
         <br />
         <Highlight attribute="food_type" hit={hit} /> -
         <Highlight attribute="city" hit={hit} />
