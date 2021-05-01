@@ -1,63 +1,114 @@
-import algoliasearch from "algoliasearch/lite";
+import algoliasearch from "algoliasearch";
 import {
   InstantSearch,
-  Hits,
   SearchBox,
   Pagination,
   Highlight,
-  ClearRefinements,
   RefinementList,
-  Configure,
+  connectHits,
 } from "react-instantsearch-dom";
+
 import "./App.css";
-import PropTypes from "prop-types";
+import toastr from "toastr";
+import React from "react";
 
 const searchClient = algoliasearch(
   process.env.REACT_APP_ALGOLIA_APP_ID,
   process.env.REACT_APP_ALGOLIA_ADMIN_KEY
 );
 
+const index = searchClient.initIndex("restaurants");
+index.setSettings({
+  searchableAttributes: ["name, food_type"],
+  attributesForFaceting: ["stars_count", "price_range", "food_type"],
+});
+
+const handleDocumentRemove = (objectID) => {
+  index.deleteObject(objectID).then(() => {
+    toastr.success("Restaurant is now removed from the database");
+  });
+};
+
 function App() {
   return (
-    <div className="App">
-      <header>SEARCH BAR</header>
-      <InstantSearch
-        searchClient={searchClient}
-        indexName="dev_sophieboulaaouli"
-      >
-        <div className="left-panel">
-          <ClearRefinements />
-          <h2>food_type</h2>
-          <RefinementList attribute="food_type" />
-          <Configure hitsPerPage={8} />
-        </div>
-        <div className="right-panel">
-          <SearchBox />
-          <Hits hitComponent={Hit} />
-          <Pagination />
-        </div>
-      </InstantSearch>
-    </div>
+    <InstantSearch searchClient={searchClient} indexName="restaurants">
+      <Header />
+      <Filters />
+      <Results />
+    </InstantSearch>
   );
 }
 
-function Hit(props) {
+function Header() {
   return (
-    <div>
-      <img src={props.hit.image} align="left" alt={props.hit.name} />
-      <div className="hit-name">
-        <Highlight attribute="name" hit={props.hit} />
+    <header className="">
+      <h1>RestO</h1>
+      <i className="fa fa-search" />
+      <SearchBox />
+    </header>
+  );
+}
+
+function Filters() {
+  return (
+    <div className="search-container">
+      <div className="attributes-filters">
+        <RefinementList attribute="food_type" />
+        <RefinementList attribute="price_range" />
+        <RefinementList attribute="stars_count" />
       </div>
-      <div className="hit-description">
-        <Highlight attribute="description" hit={props.hit} />
-      </div>
-      <div className="hit-price">${props.hit.price}</div>
     </div>
   );
 }
 
-Hit.propTypes = {
-  hit: PropTypes.object.isRequired,
-};
+function Results() {
+  return (
+    <div className="results-container" id="results">
+      <MyHits />
+      <div className="pagination">
+        <Pagination />
+      </div>
+    </div>
+  );
+}
+
+const MyHits = connectHits(({ hits }) => {
+  const hs = hits.map((hit) => <HitComponent key={hit.objectID} hit={hit} />);
+  return (
+    <div className="results" id="hits">
+      {hs}
+    </div>
+  );
+});
+
+function HitComponent({ hit }) {
+  return (
+    <div className="hit-container">
+      <div className="img-container">
+        <img
+          src={hit.image_url}
+          align="left"
+          alt={hit.name}
+          className="hit-img"
+        />
+      </div>
+      <div className="infos-container">
+        <Highlight attribute="name" hit={hit} /> -
+        <Highlight attribute="stars_count" hit={hit} />
+        <br />
+        <Highlight attribute="food_type" hit={hit} /> -
+        <Highlight attribute="city" hit={hit} />
+      </div>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          handleDocumentRemove(hit.objectID);
+        }}
+      >
+        Supprimer
+      </button>
+    </div>
+  );
+}
 
 export default App;
