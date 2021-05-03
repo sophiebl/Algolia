@@ -16,6 +16,7 @@ import React, { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./global";
 import { theme } from "./theme";
+import { Burger, Filters } from "./components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
@@ -53,6 +54,10 @@ function App() {
         <GlobalStyles />
         <InstantSearch searchClient={searchClient} indexName="restaurants">
           <Header />
+          <div>
+            <Burger open={open} setOpen={setOpen} />
+            <Filters open={open} index={index} />
+          </div>
           <div className="wrapper">
             <FiltersItem />
             <Results />
