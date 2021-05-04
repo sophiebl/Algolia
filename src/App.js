@@ -19,7 +19,6 @@ import {
 
 import { priceRange, rateComment } from "./helpers/FormatTextFilter";
 
-import "./App.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 

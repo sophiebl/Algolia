@@ -31,14 +31,6 @@ export const GlobalStyles = createGlobalStyle`
 
   h2{color: ${({ theme }) => theme.primaryTitle}}
 
-  header{
-    display: flex;
-    padding: 0 25px;
-    justify-content: space-between;
-    align-items: center;
-    background: ${({ theme }) => theme.primaryElement};
-  }
-
   .btn{
     color: ${({ theme }) => theme.primaryTitle};
     cursor:pointer;
@@ -55,6 +47,152 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.secondaryText};
     border: 2px solid ${({ theme }) => theme.secondaryButton};
     background-color: ${({ theme }) => theme.secondaryButton};
+  }
+
+
+
+  /**** Header
+  ***/
+
+   header{
+    display: flex;
+    padding: 0 25px;
+    justify-content: space-between;
+    align-items: center;
+    background: ${({ theme }) => theme.primaryElement};
+  }
+
+  .logo {
+    margin-right: 10px;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  input[type="search"] {
+    padding: 6px;
+    margin-top: 8px;
+    margin-right: 16px;
+    border: none;
+    font-size: 20px;
+    outline: none;
+    border-bottom: 1px solid rgb(168, 165, 165);
+  }
+
+  .ais-SearchBox-form {
+    border-radius: 5px;
+  }
+
+  .ais-SearchBox-submit {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .ais-SearchBox-submitIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .ais-SearchBox-reset,
+  .ais-SearchBox-resetIcon {
+    display: none;
+  }
+
+  /**** Main content
+  ***/
+
+  .wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    padding-top: 10px;
+  }
+
+  .results {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+  }
+
+  .hit-container {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    max-width: 50rem;
+    max-height: 200px;
+    margin: 10px 15px;
+    background: #fff;
+    box-shadow: 5px 2px 12px rgb(0 0 0 / 17%);
+    border-radius: 2px;
+  }
+
+
+
+  .separator {
+    margin: 0 5px;
+  }
+
+  .img-col img {
+    height: 200px;
+  }
+
+  .infos-col {
+    flex-basis: 300px;
+  }
+
+  .infos-col > div {
+    margin-bottom: 5px;
+  }
+
+  .delete-col {
+    align-self: flex-end;
+  }
+  .pagination {
+    margin: 0 auto;
+    width: 250px;
+  }
+
+  .ais-Pagination .ais-Pagination-list {
+    list-style-type: none;
+  }
+
+  .ais-Pagination .ais-Pagination-item {
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 3px;
+    margin: 1px;
+    border-color: #ddd;
+    background: transparent;
+  }
+
+  /**** Form
+  ***/
+
+  .form-add-restaurant > div {
+    margin: 10px 0;
+  }
+
+  /**** Mobile
+  ***/
+
+  @media (max-width: 767px) {
+    .burger {
+      display: block;
+    }
+    .logo,
+    .search-container {
+      display: none;
+    }
+    .hit-container {
+      font-size: 0.8em;
+    }
+    .img-col img {
+      height: 180px;
+      margin-right: 20px;
+    }
   }
 
   
