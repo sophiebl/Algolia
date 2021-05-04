@@ -43,7 +43,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.primaryTitle};
     cursor:pointer;
     font-size: 1em;
-    margin: 1em;
+    margin: 1em 0;
     padding: 0.25em 1em;
     border: 2px solid ${({ theme }) => theme.primaryElement};
     background-color: ${({ theme }) => theme.primaryElement};
@@ -51,6 +51,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .btn.secondary{
+    margin: 1em;
     color: ${({ theme }) => theme.secondaryText};
     border: 2px solid ${({ theme }) => theme.secondaryButton};
     background-color: ${({ theme }) => theme.secondaryButton};
