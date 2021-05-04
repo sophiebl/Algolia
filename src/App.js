@@ -6,6 +6,7 @@ import {
   SearchBox,
   Pagination,
   Highlight,
+  Configure,
   RefinementList,
   connectHits,
 } from "react-instantsearch-dom";
@@ -106,6 +107,7 @@ function App() {
       <>
         <GlobalStyles />
         <InstantSearch searchClient={searchClient} indexName="restaurants">
+          <Configure aroundLatLngViaIP={true} />
           <Header />
           <div className="wrapper">
             <FiltersItem />
