@@ -15,7 +15,7 @@ const Filters = ({ open, index }) => {
 
 function FiltersItem() {
   return (
-    <div className="search-container">
+    <div>
       <div className="attributes-filters">
         <h4>Food type</h4>
         <RefinementList attribute="food_type" />

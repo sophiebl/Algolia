@@ -61,7 +61,7 @@ index.setSettings({
 
 const handleRestaurantRemove = (objectID) => {
   index.deleteObject(objectID).then(() => {
-    toast("Restaurant is now removed from the database !", {
+    toast("This restaurant is now removed from the database !", {
       position: toast.POSITION.TOP_LEFT,
     });
   });
