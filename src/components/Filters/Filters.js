@@ -3,6 +3,7 @@ import { bool } from "prop-types";
 import { RefinementList } from "react-instantsearch-dom";
 
 import { StyledFilters } from "./Filters.styled";
+import { priceRange } from "../../helpers/FormatTextFilter";
 
 const Filters = ({ open, index }) => {
   return (
@@ -16,11 +17,27 @@ function FiltersItem() {
   return (
     <div className="search-container">
       <div className="attributes-filters">
+        <h4>Food type</h4>
         <RefinementList attribute="food_type" />
-        <RefinementList attribute="price_range" />
+        <h4>Rate</h4>
         <RefinementList attribute="stars_count" />
+        <h4>Dining style</h4>
         <RefinementList attribute="dining_style" />
-        <RefinementList attribute="price" />
+        <h4>Price</h4>
+        <RefinementList
+          attribute="price"
+          transformItems={(items) =>
+            items.map((item) => {
+              return {
+                ...item,
+                label: `${"$".repeat(parseInt(item.label))} ${priceRange(
+                  item.label
+                )}`,
+              };
+            })
+          }
+        />
+        <h4>Payment options</h4>
         <RefinementList attribute="payment_options" />
       </div>
     </div>

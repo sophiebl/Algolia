@@ -5,7 +5,7 @@ export const theme = {
   primaryHover: "#343078",
   primaryTitle: "#FFB48F",
   primaryText: "#282828",
-  primaryElement: "#FCCD04",
+  primaryElement: "#ffece3",
   secondaryButton: "#f1f1f1",
   secondaryText: "#c5c5c5",
   mobile: "576px",

@@ -1,9 +1,19 @@
+.logo {
+  margin-right: 10px;
+}
+
+.burger {
+  display: none;
+}
+
 input[type="search"] {
   padding: 6px;
   margin-top: 8px;
   margin-right: 16px;
   border: none;
   font-size: 20px;
+  outline: none;
+  border-bottom: 1px solid rgb(168, 165, 165);
 }
 
 .ais-SearchBox-form {
@@ -21,10 +31,16 @@ input[type="search"] {
   height: 20px;
 }
 
+.ais-SearchBox-reset,
+.ais-SearchBox-resetIcon {
+  display: none;
+}
+
 .wrapper {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
+  padding-top: 10px;
 }
 
 .results {
@@ -35,14 +51,18 @@ input[type="search"] {
 
 .hit-container {
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-between;
   max-width: 50rem;
   max-height: 200px;
   margin: 10px 15px;
   background: #fff;
-  box-shadow: 5px 2px 12px rgba(0, 0, 0, 0.034);
+  box-shadow: 5px 2px 12px rgb(0 0 0 / 17%);
   border-radius: 2px;
+}
+
+.separator {
+  margin: 0 5px;
 }
 
 .img-col img {
@@ -53,8 +73,16 @@ input[type="search"] {
   flex-basis: 300px;
 }
 
+.infos-col > div {
+  margin-bottom: 5px;
+}
+
 .delete-col {
   align-self: flex-end;
+}
+.pagination {
+  margin: 0 auto;
+  width: 250px;
 }
 
 .ais-Pagination .ais-Pagination-list {
@@ -69,4 +97,26 @@ input[type="search"] {
   margin: 1px;
   border-color: #ddd;
   background: transparent;
+}
+
+/*ADD restaurant*/
+
+.form-add-restaurant > div {
+  margin: 10px 0;
+}
+
+@media (max-width: 767px) {
+  .burger {
+    display: block;
+  }
+  .logo {
+    display: none;
+  }
+  .hit-container {
+    font-size: 0.8em;
+  }
+  .img-col img {
+    height: 180px;
+    margin-right: 20px;
+  }
 }

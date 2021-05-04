@@ -214,34 +214,42 @@ function HitComponent({ hit }) {
         />
       </div>
       <div className="infos-col">
-        <h2>
-          <Highlight attribute="name" hit={hit} />
-        </h2>
-        <Highlight attribute="stars_count" hit={hit} />
-        <StarRatingComponent
-          name="rate"
-          value={hit.stars_count}
-          editing={false}
-        />
-        <span>{rateComment(hit.stars_count)}</span>
-        <Highlight attribute="reviews_count" hit={hit} />
-        <br />
-        <StarRatingComponent
-          name="price"
-          editing={false}
-          renderStarIcon={() => <span>$</span>}
-          starCount={4}
-          value={hit.price}
-        />
-        <br />
-        <Highlight attribute="food_type" hit={hit} />
-        <br />
-        <FontAwesomeIcon icon={faMapMarkerAlt} />
-        <Highlight attribute="city" hit={hit} />
+        <div>
+          <h2>
+            <Highlight attribute="name" hit={hit} />
+          </h2>
+          <Highlight attribute="stars_count" hit={hit} />
+          <StarRatingComponent
+            name="rate"
+            value={hit.stars_count}
+            editing={false}
+          />
+          <span>{rateComment(hit.stars_count)}</span>
+          <Highlight attribute="reviews_count" hit={hit} />
+        </div>
+        <div>
+          <StarRatingComponent
+            name="price"
+            editing={false}
+            renderStarIcon={() => <span>$</span>}
+            starCount={4}
+            value={hit.price}
+          />
+          <span className="separator">·</span>
+          <Highlight attribute="food_type" hit={hit} />
+        </div>
+        <div>
+          <FontAwesomeIcon
+            icon={faMapMarkerAlt}
+            className="mr-5"
+            style={{ marginRight: 5 }}
+          />
+          <Highlight attribute="city" hit={hit} />
+        </div>
       </div>
       <div className="delete-col">
         <button
-          className="btn"
+          className="btn secondary"
           onClick={(e) => {
             e.stopPropagation();
             handleRestaurantRemove(hit.objectID);
