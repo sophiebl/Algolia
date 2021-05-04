@@ -194,6 +194,10 @@ export const GlobalStyles = createGlobalStyle`
       height: 180px;
       margin-right: 20px;
     }
+    input[type="search"] {
+      width: 140px
+    }
+
   }
 
   
