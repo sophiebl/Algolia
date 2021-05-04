@@ -19,7 +19,11 @@ import { theme } from "./theme";
 import { Burger, Filters } from "./components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrash,
+  faPlus,
+  faMapMarkerAlt,
+} from "@fortawesome/free-solid-svg-icons";
 
 const searchClient = algoliasearch(
   process.env.REACT_APP_ALGOLIA_APP_ID,
@@ -28,7 +32,11 @@ const searchClient = algoliasearch(
 
 const index = searchClient.initIndex("restaurants");
 index.setSettings({
-  searchableAttributes: ["name, food_type"],
+  searchableAttributes: [
+    "food_type, city, area, neighborhood",
+    "name",
+    "postal_code",
+  ],
   attributesForFaceting: [
     "stars_count",
     "price_range",
@@ -72,21 +80,45 @@ function Header() {
   return (
     <header className="">
       <h1>RestO</h1>
-      <i className="fa fa-search" />
-      <SearchBox />
+      <SearchBox
+        translations={{
+          placeholder: "Location, Restaurant or Cuisine",
+        }}
+      />
     </header>
   );
 }
 
 function FiltersItem() {
+  const priceRange = (price) => {
+    if (price === "2") return `$30 and under`;
+    else if (price === "3") return `$31 to $50`;
+    else if (price === "4") return `$50 and over`;
+  };
   return (
     <div className="search-container">
       <div className="attributes-filters">
+        <h4>Food type</h4>
         <RefinementList attribute="food_type" />
-        <RefinementList attribute="price_range" />
+        <h4>Rate</h4>
         <RefinementList attribute="stars_count" />
+        <h4>Dining style</h4>
         <RefinementList attribute="dining_style" />
-        <RefinementList attribute="price" />
+        <h4>Price</h4>
+        <RefinementList
+          attribute="price"
+          transformItems={(items) =>
+            items.map((item) => {
+              return {
+                ...item,
+                label: `${"$".repeat(parseInt(item.label))} ${priceRange(
+                  item.label
+                )}`,
+              };
+            })
+          }
+        />
+        <h4>Payment options</h4>
         <RefinementList attribute="payment_options" />
       </div>
     </div>
@@ -156,7 +188,9 @@ function HitComponent({ hit }) {
           value={hit.price}
         />
         <br />
-        <Highlight attribute="food_type" hit={hit} /> -
+        <Highlight attribute="food_type" hit={hit} />
+        <br />
+        <FontAwesomeIcon icon={faMapMarkerAlt} />
         <Highlight attribute="city" hit={hit} />
       </div>
       <div className="delete-col">

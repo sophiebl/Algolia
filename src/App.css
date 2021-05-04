@@ -6,9 +6,19 @@ input[type="search"] {
   font-size: 20px;
 }
 
+.ais-SearchBox-form {
+  border-radius: 5px;
+}
+
 .ais-SearchBox-submit {
   background: none;
   border: none;
+  cursor: pointer;
+}
+
+.ais-SearchBox-submitIcon {
+  width: 20px;
+  height: 20px;
 }
 
 .wrapper {
@@ -26,17 +36,21 @@ input[type="search"] {
 .hit-container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   max-width: 50rem;
+  max-height: 200px;
   margin: 10px 15px;
   background: #fff;
   box-shadow: 5px 2px 12px rgba(0, 0, 0, 0.034);
   border-radius: 2px;
 }
 
+.img-col img {
+  height: 200px;
+}
+
 .infos-col {
   flex-basis: 300px;
-  flex-shrink: 1;
 }
 
 .delete-col {

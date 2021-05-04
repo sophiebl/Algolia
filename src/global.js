@@ -32,6 +32,8 @@ export const GlobalStyles = createGlobalStyle`
   header{
     display: flex;
     justify-content: space-around;
+    align-items: center;
+
   }
 
   .btn{
