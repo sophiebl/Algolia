@@ -8,22 +8,32 @@ import {
   connectHits,
 } from "react-instantsearch-dom";
 
-import "./App.css";
-import toastr from "toastr";
-import StarRatingComponent from "react-star-rating-component";
+import {
+  GoogleMapsLoader,
+  GeoSearch,
+  Control,
+  Marker,
+} from "react-instantsearch-dom-maps";
 
-import React, { useState } from "react";
+import { priceRange, rateComment } from "./helpers/FormatTextFilter";
+
+import "./App.css";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import StarRatingComponent from "react-star-rating-controlled-component";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./global";
 import { theme } from "./theme";
-import { Burger, Filters } from "./components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
   faTrash,
-  faPlus,
   faMapMarkerAlt,
+  faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
+
+toast.configure();
 
 const searchClient = algoliasearch(
   process.env.REACT_APP_ALGOLIA_APP_ID,
