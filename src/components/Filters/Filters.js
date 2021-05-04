@@ -5,18 +5,12 @@ import { RefinementList } from "react-instantsearch-dom";
 import { StyledFilters } from "./Filters.styled";
 import { priceRange } from "../../helpers/FormatTextFilter";
 
-const Filters = ({ open, index }) => {
+const Filters = ({ open }) => {
   return (
     <StyledFilters open={open}>
-      <FiltersItem />
-    </StyledFilters>
-  );
-};
-
-function FiltersItem() {
-  return (
-    <div>
       <div className="attributes-filters">
+        <h4>City</h4>
+        <RefinementList attribute="city" />
         <h4>Food type</h4>
         <RefinementList attribute="food_type" />
         <h4>Rate</h4>
@@ -40,9 +34,9 @@ function FiltersItem() {
         <h4>Payment options</h4>
         <RefinementList attribute="payment_options" />
       </div>
-    </div>
+    </StyledFilters>
   );
-}
+};
 
 Filters.propTypes = {
   open: bool.isRequired,

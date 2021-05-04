@@ -50,6 +50,7 @@ index.setSettings({
     "postal_code",
   ],
   attributesForFaceting: [
+    "city",
     "stars_count",
     "price_range",
     "food_type",
@@ -94,7 +95,7 @@ const handleRestaurantAdd = (inputs) => {
 
   index
     .saveObjects(objects, { autoGenerateObjectIDIfNotExist: true })
-    .then(({ objectIDs }) => {
+    .then(() => {
       toast.success("Restaurant is now added to the database", {
         position: toast.POSITION.TOP_LEFT,
       });
@@ -156,6 +157,8 @@ function FiltersItem() {
   return (
     <div className="search-container">
       <div className="attributes-filters">
+        <h4>City</h4>
+        <RefinementList attribute="city" />
         <h4>Food type</h4>
         <RefinementList attribute="food_type" />
         <h4>Rate</h4>
