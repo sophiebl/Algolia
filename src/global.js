@@ -121,15 +121,13 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    max-width: 50rem;
+    width: 50rem;
     max-height: 200px;
     margin: 10px 15px;
     background: #fff;
     box-shadow: 5px 2px 12px rgb(0 0 0 / 17%);
     border-radius: 2px;
   }
-
-
 
   .separator {
     margin: 0 5px;
@@ -183,22 +181,26 @@ export const GlobalStyles = createGlobalStyle`
     .burger {
       display: block;
     }
+
     .logo,
     .search-container {
       display: none;
     }
+
     .hit-container {
       font-size: 0.8em;
+      width: inherit;
+      max-width: 50rem;
     }
+
     .img-col img {
       height: 180px;
       margin-right: 20px;
     }
+
     input[type="search"] {
       width: 140px
     }
-
   }
 
-  
-  `;
+`;
