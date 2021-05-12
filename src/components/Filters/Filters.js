@@ -36,10 +36,10 @@ const FiltersItem = () => {
   );
 };
 
-const Filters = ({ open }) => {
+const Filters = ({ open, mobile }) => {
   return (
     <>
-      {open ? (
+      {mobile ? (
         <StyledFilters open={open}>
           <FiltersItem />
         </StyledFilters>
@@ -54,6 +54,7 @@ const Filters = ({ open }) => {
 
 Filters.propTypes = {
   open: bool,
+  mobile: bool,
 };
 
 export default Filters;

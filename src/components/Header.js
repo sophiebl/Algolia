@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useOnClickOutside } from "../hooks";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUtensils } from "@fortawesome/free-solid-svg-icons";
 
@@ -10,12 +11,14 @@ import PlusIcon from "./PlusIcon/PlusIcon";
 export default function Header({ index, SearchBox, handleRestaurantAdd }) {
   const [open, setOpen] = useState(false);
   const [openRestaurantForm, setOpenRestaurantForm] = useState(false);
+  const node = useRef();
+  useOnClickOutside(node, () => setOpen(false));
 
   return (
     <header>
-      <div className="burger">
+      <div className="burger" ref={node}>
         <Burger open={open} setOpen={setOpen} />
-        <Filters open={open} index={index} />
+        <Filters open={open} index={index} mobile />
       </div>
       <h1>
         <span className="logo">Restaurants</span>
