@@ -85,21 +85,20 @@ export default function Results({ handleRestaurantRemove }) {
 
   return (
     <div id="results">
-      <div style={{ height: 100 }}>
+      <div
+        style={{
+          height: 300,
+          margin: "10px 15px",
+          boxShadow: "5px 2px 12px rgb(0 0 0 / 17%)",
+          borderRadius: 2,
+        }}
+      >
         <GoogleMapsLoader
           apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
           endpoint="https://maps.googleapis.com/maps/api/js?v=weekly"
         >
           {(google) => (
-            <GeoSearch
-              google={google}
-              initialZoom={8}
-              // mapTypeId={google.maps.MapTypeId.SATELLITE}
-              // initialPosition={{
-              //   lat: 48.88038,
-              //   lng: 2.32695,
-              // }}
-            >
+            <GeoSearch google={google} initialZoom={8}>
               {({ hits }) => (
                 <div>
                   <Control />

@@ -28,6 +28,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 14px;
     overflow-x: hidden;
   }
+
   h1{color: ${({ theme }) => theme.primaryText}}
 
   h2{color: ${({ theme }) => theme.primaryTitle}}
@@ -49,8 +50,6 @@ export const GlobalStyles = createGlobalStyle`
     border: 2px solid ${({ theme }) => theme.secondaryButton};
     background-color: ${({ theme }) => theme.secondaryButton};
   }
-
-
 
   /**** Header
   ***/
@@ -166,6 +165,35 @@ export const GlobalStyles = createGlobalStyle`
     border-color: #ddd;
     background: transparent;
   }
+
+  /**** GMaps
+  ***/
+
+  .ais-GeoSearch-map, .ais-GeoSearch{
+    height: 100%;
+  }
+
+  .ais-GeoSearch{
+    position: relative;
+  }
+  
+  .ais-GeoSearch-control{
+      position: absolute;
+      top: 0.8rem;
+      left: 3.75rem;
+  }
+
+  .ais-GeoSearch-label {
+      display: block;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.8rem;
+      background-color: #fff;
+      border-radius: 5px;
+      transition: background-color 0.2s ease-out;
+      box-shadow: rgb(0 0 0 / 10%) 0 1px 1px;
+      outline: none;
+  }
+  
 
   /**** Form
   ***/
