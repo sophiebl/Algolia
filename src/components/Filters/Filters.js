@@ -44,7 +44,7 @@ const Filters = ({ open, mobile }) => {
           <FiltersItem />
         </StyledFilters>
       ) : (
-        <div className="search-container">
+        <div className="filter-container">
           <FiltersItem />
         </div>
       )}

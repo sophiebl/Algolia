@@ -31,7 +31,19 @@ export const GlobalStyles = createGlobalStyle`
 
   h1{color: ${({ theme }) => theme.primaryText}}
 
-  h2{color: ${({ theme }) => theme.primaryTitle}}
+
+  h2 {
+    color: ${({ theme }) => theme.primaryTitle}; 
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
+
+  h4 {
+    font-size: 1.3em;
+  }
 
   .btn{
     color: ${({ theme }) => theme.primaryTitle};
@@ -71,11 +83,12 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   input[type="search"] {
+    width: 280px;
     padding: 6px;
     margin-top: 8px;
     margin-right: 16px;
     border: none;
-    font-size: 20px;
+    font-size: 1.2em;
     outline: none;
     border-bottom: 1px solid rgb(168, 165, 165);
   }
@@ -108,6 +121,23 @@ export const GlobalStyles = createGlobalStyle`
     flex-flow: row nowrap;
     justify-content: space-around;
     padding-top: 10px;
+  }
+  
+  .ais-RefinementList-item{
+    margin-bottom: 3px;
+  }
+
+  .ais-RefinementList-labelText {
+    margin-left: 10px;
+    color: ${({ theme }) => theme.infoText};
+  }
+  
+  .ais-RefinementList-count {
+    padding: 0.1rem 0.4rem;
+    font-size: 0.8rem;
+    color: ${({ theme }) => theme.infoText};
+    background-color: ${({ theme }) => theme.infoElement};
+    border-radius: 8px;
   }
 
   .results {
@@ -176,7 +206,7 @@ export const GlobalStyles = createGlobalStyle`
   .ais-GeoSearch{
     position: relative;
   }
-  
+
   .ais-GeoSearch-control{
       position: absolute;
       top: 0.8rem;
@@ -211,7 +241,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     .logo,
-    .search-container {
+    .filter-container {
       display: none;
     }
 
@@ -227,7 +257,8 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     input[type="search"] {
-      width: 140px
+      width: 160px;
+      font-size: 1em;
     }
   }
 
