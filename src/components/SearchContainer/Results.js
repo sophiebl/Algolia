@@ -6,12 +6,12 @@ import { faTrash, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 
 import { rateComment } from "../../helpers/FormatTextFilter";
 
-// import {
-//   GoogleMapsLoader,
-//   GeoSearch,
-//   Control,
-//   Marker,
-// } from "react-instantsearch-dom-maps";
+import {
+  GoogleMapsLoader,
+  GeoSearch,
+  Control,
+  Marker,
+} from "react-instantsearch-dom-maps";
 
 export default function Results({ handleRestaurantRemove }) {
   const MyHits = connectHits(({ hits }) => {
@@ -86,31 +86,31 @@ export default function Results({ handleRestaurantRemove }) {
   return (
     <div id="results">
       <div style={{ height: 100 }}>
-        {/* <GoogleMapsLoader
-              apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-              endpoint="https://maps.googleapis.com/maps/api/js?v=weekly"
+        <GoogleMapsLoader
+          apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+          endpoint="https://maps.googleapis.com/maps/api/js?v=weekly"
+        >
+          {(google) => (
+            <GeoSearch
+              google={google}
+              initialZoom={8}
+              // mapTypeId={google.maps.MapTypeId.SATELLITE}
+              // initialPosition={{
+              //   lat: 48.88038,
+              //   lng: 2.32695,
+              // }}
             >
-              {(google) => (
-                <GeoSearch
-                  google={window.google}
-                  initialZoom={8}
-                  mapTypeId={google.maps.MapTypeId.SATELLITE}
-                  initialPosition={{
-                    lat: 48.88038,
-                    lng: 2.32695,
-                  }}
-                >
-                  {({ hits }) => (
-                    <div>
-                      <Control />
-                      {hits.map((hit) => (
-                        <Marker key={hit.objectID} hit={hit} />
-                      ))}
-                    </div>
-                  )}
-                </GeoSearch>
+              {({ hits }) => (
+                <div>
+                  <Control />
+                  {hits.map((hit) => (
+                    <Marker key={hit.objectID} hit={hit} />
+                  ))}
+                </div>
               )}
-            </GoogleMapsLoader> */}
+            </GeoSearch>
+          )}
+        </GoogleMapsLoader>
       </div>
 
       <MyHits />

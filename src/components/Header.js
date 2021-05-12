@@ -12,7 +12,7 @@ export default function Header({ index, SearchBox, handleRestaurantAdd }) {
   const [openRestaurantForm, setOpenRestaurantForm] = useState(false);
 
   return (
-    <header className="">
+    <header>
       <div className="burger">
         <Burger open={open} setOpen={setOpen} />
         <Filters open={open} index={index} />
