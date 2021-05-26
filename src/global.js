@@ -28,9 +28,22 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 14px;
     overflow-x: hidden;
   }
+
   h1{color: ${({ theme }) => theme.primaryText}}
 
-  h2{color: ${({ theme }) => theme.primaryTitle}}
+
+  h2 {
+    color: ${({ theme }) => theme.primaryTitle}; 
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.4em;
+  }
+
+  h4 {
+    font-size: 1.3em;
+  }
 
   .btn{
     color: ${({ theme }) => theme.primaryTitle};
@@ -49,8 +62,6 @@ export const GlobalStyles = createGlobalStyle`
     border: 2px solid ${({ theme }) => theme.secondaryButton};
     background-color: ${({ theme }) => theme.secondaryButton};
   }
-
-
 
   /**** Header
   ***/
@@ -72,11 +83,12 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   input[type="search"] {
+    width: 280px;
     padding: 6px;
     margin-top: 8px;
     margin-right: 16px;
     border: none;
-    font-size: 20px;
+    font-size: 1.2em;
     outline: none;
     border-bottom: 1px solid rgb(168, 165, 165);
   }
@@ -110,6 +122,23 @@ export const GlobalStyles = createGlobalStyle`
     justify-content: space-around;
     padding-top: 10px;
   }
+  
+  .ais-RefinementList-item{
+    margin-bottom: 3px;
+  }
+
+  .ais-RefinementList-labelText {
+    margin-left: 10px;
+    color: ${({ theme }) => theme.infoText};
+  }
+  
+  .ais-RefinementList-count {
+    padding: 0.1rem 0.4rem;
+    font-size: 0.8rem;
+    color: ${({ theme }) => theme.infoText};
+    background-color: ${({ theme }) => theme.infoElement};
+    border-radius: 8px;
+  }
 
   .results {
     display: flex;
@@ -121,15 +150,13 @@ export const GlobalStyles = createGlobalStyle`
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
-    max-width: 50rem;
+    width: 50rem;
     max-height: 200px;
     margin: 10px 15px;
     background: #fff;
     box-shadow: 5px 2px 12px rgb(0 0 0 / 17%);
     border-radius: 2px;
   }
-
-
 
   .separator {
     margin: 0 5px;
@@ -169,6 +196,35 @@ export const GlobalStyles = createGlobalStyle`
     background: transparent;
   }
 
+  /**** GMaps
+  ***/
+
+  .ais-GeoSearch-map, .ais-GeoSearch{
+    height: 100%;
+  }
+
+  .ais-GeoSearch{
+    position: relative;
+  }
+
+  .ais-GeoSearch-control{
+      position: absolute;
+      top: 0.8rem;
+      left: 3.75rem;
+  }
+
+  .ais-GeoSearch-label {
+      display: block;
+      padding: 0.3rem 0.5rem;
+      font-size: 0.8rem;
+      background-color: #fff;
+      border-radius: 5px;
+      transition: background-color 0.2s ease-out;
+      box-shadow: rgb(0 0 0 / 10%) 0 1px 1px;
+      outline: none;
+  }
+  
+
   /**** Form
   ***/
 
@@ -183,22 +239,27 @@ export const GlobalStyles = createGlobalStyle`
     .burger {
       display: block;
     }
+
     .logo,
-    .search-container {
+    .filter-container {
       display: none;
     }
+
     .hit-container {
       font-size: 0.8em;
+      width: inherit;
+      max-width: 50rem;
     }
+
     .img-col img {
       height: 180px;
       margin-right: 20px;
     }
-    input[type="search"] {
-      width: 140px
-    }
 
+    input[type="search"] {
+      width: 160px;
+      font-size: 1em;
+    }
   }
 
-  
-  `;
+`;
